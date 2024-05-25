@@ -5,11 +5,10 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 type RootStackParamList = {
   login: undefined;
-  main: undefined;
 };
 
 const SplashScreen = () => {
-    const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'main'>>();
+    const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'login'>>();
     const fadeAnim = useRef(new Animated.Value(0)).current;  // Initial value for opacity: 0
   
     useEffect(() => {
@@ -21,7 +20,7 @@ const SplashScreen = () => {
           useNativeDriver: true,
         }
       ).start(() => {
-        navigation.navigate('main');
+        navigation.navigate('login');
       });
     }, [navigation, fadeAnim]);
   

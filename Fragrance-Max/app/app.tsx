@@ -22,7 +22,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="splashscreen">
         <Stack.Screen name="splashscreen" component={SplashScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="main" component={TabNavigator} options={{ headerShown: false }} />
+        <Stack.Screen name="login" component={TabNavigator} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
