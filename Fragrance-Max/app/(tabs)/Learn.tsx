@@ -108,12 +108,10 @@ const styles = StyleSheet.create({
   },
   subtitleText: {
     fontSize: 30,
-    fontFamily: 'Times New Roman',
     fontWeight: 'bold',
   },
   titleText: {
     fontSize: 40,
-    fontFamily: 'Times New Roman',
     fontWeight: 'bold',
   },
 });
