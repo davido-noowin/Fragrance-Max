@@ -14,3 +14,9 @@ Project created using `npx create-expo-app@latest`
 - IGNORE vulnerabilities
 
 - Connect mobile device via scanning the qr code in the terminal using your mobile device's cameria on IOS or the expo go app on Android
+
+---
+### Backend Setup
+
+---
+### References:
