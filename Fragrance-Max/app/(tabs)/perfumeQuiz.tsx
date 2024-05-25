@@ -39,9 +39,7 @@ const QuizPage = () => {
   if (currentQuestionIndex >= questions.length) {
     return (
       <View style={styles.container}>
-        /*needs page switing logic and saving to database later*/
         <Text>Thank you for completing the Personalized Quiz, your reccomendations will be diplay shortly</Text>
-        /*database logic here*/
       </View>
     );
   }
