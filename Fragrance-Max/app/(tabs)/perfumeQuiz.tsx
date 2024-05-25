@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import {useColorScheme, View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 const questions = [
   {
@@ -31,7 +31,8 @@ const questions = [
 const QuizPage = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
-
+  const colorScheme = useColorScheme();
+  const textColor = colorScheme === 'dark' ? 'white' : 'black';
   const handleOptionPress = (options: string) => {
     setAnswers((prevAnswers) => [...prevAnswers, options]);
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
@@ -39,7 +40,7 @@ const QuizPage = () => {
   if (currentQuestionIndex >= questions.length) {
     return (
       <View style={styles.container}>
-        <Text>Thank you for completing the Personalized Quiz, your reccomendations will be diplay shortly</Text>
+        <Text style={{ color: textColor}}>Thank you for completing the Personalized Quiz, your reccomendations will be diplay shortly</Text>
       </View>
     );
   }
@@ -47,7 +48,7 @@ const QuizPage = () => {
   return (
     <View style={styles.container}>
       <Image source={require('@/assets/images/Logo-fragrance.jpg')} style={styles.logo} />
-      <Text style={styles.question}>{questions[currentQuestionIndex].question}</Text>
+      <Text style={[styles.question, { color: textColor}]}>{questions[currentQuestionIndex].question}</Text>
       {questions[currentQuestionIndex].options.map((option) => (
         <TouchableOpacity key={option} style={styles.option} onPress={() => handleOptionPress(option)}>
           <Text>{option}</Text>

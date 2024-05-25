@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Image, TouchableOpacity,Text } from 'react-native';
+import {useColorScheme, SafeAreaView, View, TextInput, Button, StyleSheet, Image, TouchableOpacity,Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const navigation = useNavigation();
-
+  const colorScheme = useColorScheme();
+  const textColor = colorScheme === 'dark' ? 'white' : 'black';
   const handleLogin = () => {
     // Handle login logic here
     console.log(`Logging in with email: ${email}`);//replace with Log In logic later
-    navigation.navigate('Index'); // Navigate to Home screen after login
+   // navigation.navigate('index'); // Navigate to Home screen after login
   };
   const handleSignUp = () => {
     // Handle login logic here
@@ -23,7 +24,7 @@ const LoginPage = () => {
         style={styles.logo} 
       />
       <TextInput
-        style={styles.input}
+        style={[styles.input, { color: textColor}]}
         onChangeText={setEmail}
         value={email}
         placeholder="Email"
