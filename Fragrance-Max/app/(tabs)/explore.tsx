@@ -6,8 +6,7 @@ import { ExternalLink } from '@/components/ExternalLink';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { DefaultTheme } from '@react-navigation/native';
-
+import { DefaultTheme, useTheme } from '@react-navigation/native';
 
 const TextInANest = () => {
   const [titleText, setTitleText] = useState("Basic Terms");
@@ -27,10 +26,15 @@ const TextInANest = () => {
               <Text style={styles.subtitleText}>WARNING!</Text>            
               {'\n'}
               <Text style={styles.baseText}>Not all fragrances are suitable for your skin type and can cause allergic reactions. Make sure to test the product for any allergic reactions before committing to a full purchase!</Text>
-              {'\n'}
-              -----------------------------
-              {'\n'}
-            </Text>
+              </Text>
+          </Text>
+          <View
+                style={{
+                  borderBottomColor: 'black',
+                  borderBottomWidth: 2,
+                }}
+          />
+          <Text>
             {'\n'}
             <Text style={styles.termText}>Parfum:</Text>
             {'\n'}
@@ -50,11 +54,9 @@ const TextInANest = () => {
             {'\n'}
             <Text style={styles.termText}>Fragrance Families:</Text>
             {'\n'}
-            <Text style={styles.baseText}>•There have been various attempts over the years to break down the world of fragrance into classifiable categories. 
-            While there is no unchallenged standard, the often cited 7-category system used by the SociTtT Frantaise des Parfumeurs is as follows: citrus, floral, fougere, chypre, woody, amber and leather. 
-            Conversely, Michael Edwards' Fragrances of the World uses a wheel of 4 categories: fresh, floral, oriental and woody. In either system, there are multiple subcategories of further specificity.
-             Other versions may use overlapping terms from both. As there is no universal system, it is common to see a single fragrance categorized in multiple conflicting (or non-conflicting) ways,
-              which is why it's best to use the families as loose guidelines and not rely on them too heavily.</Text>
+            <Text style={styles.baseText}>•Attempts to categorize fragrances vary, but notable systems include the 7-category model by the Société Française des Parfumeurs
+             (citrus, floral, fougère, chypre, woody, amber, and leather) and Michael Edwards' 4-category wheel (fresh, floral, oriental, and woody). 
+            These systems, along with others, often overlap and feature subcategories, making fragrance classification subjective and best used as a general guide rather than a strict standard.</Text>
             {'\n'}
             <Text style={styles.termText}>Drydown:</Text>
             {'\n'}
