@@ -11,6 +11,8 @@ type RootStackParamList = {
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'login'>>();
+  const colorScheme = useColorScheme();
+  const textColor = colorScheme === 'dark' ? 'white' : 'black';
 
   const handleLogin = () => {
     console.log(`Logging in with email: ${email}`); // Replace with actual login logic
