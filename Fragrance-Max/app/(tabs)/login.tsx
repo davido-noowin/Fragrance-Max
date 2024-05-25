@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, Image, TouchableOpacity, Text } from 'react-native';
+import {useColorScheme, SafeAreaView, View, TextInput, Button, StyleSheet, Image, TouchableOpacity,Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
@@ -28,7 +28,7 @@ const LoginPage = () => {
         style={styles.logo} 
       />
       <TextInput
-        style={styles.input}
+        style={[styles.input, { color: textColor}]}
         onChangeText={setEmail}
         value={email}
         placeholder="Email"
