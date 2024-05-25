@@ -11,7 +11,10 @@ const LoginPage = () => {
 
   return (
     <View style={styles.container}>
-      <Image source={require('./assets/images/Logo fragrances.jpg')} style={styles.logo} />
+      <Image 
+        source={require('@/assets/images/Logo-fragrance.jpg')} 
+        style={styles.logo} 
+      />
       <TextInput
         style={styles.input}
         onChangeText={setEmail}
@@ -32,8 +35,9 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   logo: {
-    width: 100,
-    height: 100,
+    width: 300,
+    height: 300,
+    borderRadius: 100, 
     alignSelf: 'center',
     marginBottom: 16,
   },
