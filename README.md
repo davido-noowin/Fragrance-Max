@@ -18,5 +18,12 @@ Project created using `npx create-expo-app@latest`
 ---
 ### Backend Setup
 
+- Install dependencies `pip install openpyxl scikit-learn numpy pandas fastapi uvicorn`
+
+- CD into backend/src
+
+- to run locally: `python -m uvicorn main:app --reload`
+
+- to run on deployment machine: TBA
 ---
 ### References:
