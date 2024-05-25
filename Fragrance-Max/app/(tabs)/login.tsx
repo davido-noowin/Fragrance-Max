@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Image, TouchableOpacity,Text } from 'react-native';
+import { View, TextInput, StyleSheet, Image, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+type RootStackParamList = {
+  login: undefined;
+  index: undefined;
+};
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'login'>>();
 
   const handleLogin = () => {
-    // Handle login logic here
-    console.log(`Logging in with email: ${email}`);//replace with Log In logic later
-    navigation.navigate('Index'); // Navigate to Home screen after login
+    console.log(`Logging in with email: ${email}`); // Replace with actual login logic
+    navigation.navigate('index'); // Ensure this matches the route name defined in App.tsx
   };
+
   const handleSignUp = () => {
-    // Handle login logic here
-    console.log(`Signing up with email: ${email}`);//replace with Sign Up logic later
-  }
+    console.log(`Signing up with email: ${email}`); // Replace with actual sign-up logic
+  };
 
   return (
     <View style={styles.container}>

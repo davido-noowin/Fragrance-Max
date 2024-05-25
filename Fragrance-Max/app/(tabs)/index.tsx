@@ -1,11 +1,11 @@
+import React from 'react';
 import { Image, StyleSheet, Platform, View } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { HelloWave } from '@/components/HelloWave';
 
-export default function HomeScreen() {
+const HomeScreen = () => {
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -20,12 +20,12 @@ export default function HomeScreen() {
         <HelloWave />
       </ThemedView>
       <View
-              style={{
-                borderBottomColor: 'black',
-                borderBottomWidth: 1,
-                height: 1,
-              }}
-            />
+        style={{
+          borderBottomColor: 'black',
+          borderBottomWidth: 1,
+          height: 1,
+        }}
+      />
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
         <ThemedText>
@@ -75,3 +75,5 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
 });
+
+export default HomeScreen;
