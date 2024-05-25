@@ -1,2 +1,2 @@
-Only the dataset was retrieved from: https://github.com/rdemarqui/perfume_recommender
+Dataset was retrieved from along with a bit of data preprocessing: https://github.com/rdemarqui/perfume_recommender 
 
