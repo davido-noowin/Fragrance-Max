@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Image, TouchableOpacity,Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
+  const navigation = useNavigation();
 
   const handleLogin = () => {
     // Handle login logic here
     console.log(`Logging in with email: ${email}`);//replace with Log In logic later
+    navigation.navigate('Index'); // Navigate to Home screen after login
   };
   const handleSignUp = () => {
     // Handle login logic here
