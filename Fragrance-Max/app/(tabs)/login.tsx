@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Image, Touchable } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, TextInput, Button, StyleSheet, Image, TouchableOpacity,Text } from 'react-native';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
 
   const handleLogin = () => {
     // Handle login logic here
-    console.log(`Logging in with email: ${email}`);
+    console.log(`Logging in with email: ${email}`);//replace with Log In logic later
   };
+  const handleSignUp = () => {
+    // Handle login logic here
+    console.log(`Signing up with email: ${email}`);//replace with Sign Up logic later
+  }
 
   return (
     <View style={styles.container}>
@@ -24,7 +27,12 @@ const LoginPage = () => {
         keyboardType="email-address"
         autoCapitalize="none"
       />
-      <Button title="Login" onPress={handleLogin} />
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+        <Text style={styles.buttonText}>Log In</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+        <Text style={styles.buttonText}>Sign Up</Text>
+      </TouchableOpacity>
     </View>
   );
 };

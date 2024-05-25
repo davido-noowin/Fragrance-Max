@@ -3,6 +3,10 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 const questions = [
   {
+    question: 'What is your gender?',
+    options: ['Male', 'Female', 'Non-binary', 'Prefer not to say'],
+  },
+  {
     question: 'How would you describe your scent preference?',
     options: ['Fresh (citrus and oceanic)', 'Floral (roses, jasmine, lilies)', 'Woody (pine, cedar, sandalwood)', 'Oriental (spices, amber, vanilla)', 'Green (grass, leaves, tea)'],
   },
@@ -26,27 +30,25 @@ const questions = [
 
 const QuizPage = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState<string[]>([]);
 
-  const handleOptionPress = (option) => {
-    setAnswers((prevAnswers) => [...prevAnswers, option]);
+  const handleOptionPress = (options: string) => {
+    setAnswers((prevAnswers) => [...prevAnswers, options]);
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
   };
-
   if (currentQuestionIndex >= questions.length) {
     return (
       <View style={styles.container}>
-        <Text>Quiz completed! Your answers:</Text>
-        {answers.map((answer, index) => (
-          <Text key={index}>{answer}</Text>
-        ))}
+        /*needs page switing logic and saving to database later*/
+        <Text>Thank you for completing the Personalized Quiz, your reccomendations will be diplay shortly</Text>
+        /*database logic here*/
       </View>
     );
   }
 
   return (
     <View style={styles.container}>
-      <Image source={require('./assets/images/Logo fragrances.jpg')} style={styles.logo} />
+      <Image source={require('@/assets/images/Logo-fragrance.jpg')} style={styles.logo} />
       <Text style={styles.question}>{questions[currentQuestionIndex].question}</Text>
       {questions[currentQuestionIndex].options.map((option) => (
         <TouchableOpacity key={option} style={styles.option} onPress={() => handleOptionPress(option)}>
