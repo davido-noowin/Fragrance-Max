@@ -1,0 +1,2 @@
+Only the dataset was retrieved from: https://github.com/rdemarqui/perfume_recommender
+
