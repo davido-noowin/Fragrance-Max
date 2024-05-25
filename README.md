@@ -7,9 +7,9 @@ Project created using `npx create-expo-app@latest`
 ---
 ### How To Run:
 
-- Install all dependencies with 'npm install'
+- Install all dependencies with `npm install`
 
-- Initiate development server with 'npx expo start'
+- Initiate development server with `npx expo start`
 
 - IGNORE vulnerabilities
 
