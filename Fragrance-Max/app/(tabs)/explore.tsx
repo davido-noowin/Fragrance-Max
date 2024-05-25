@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
+import { useColorScheme, StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
 
 import { Collapsible } from '@/components/Collapsible';
 import { ExternalLink } from '@/components/ExternalLink';
@@ -7,6 +7,7 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { DefaultTheme, useTheme } from '@react-navigation/native';
+
 
 const TextInANest = () => {
   const [titleText, setTitleText] = useState("Basic Terms");
@@ -100,6 +101,7 @@ const styles = StyleSheet.create({
   baseText: {
     fontFamily: 'Cochin',
     fontSize: 18,
+    color: scheme === 'dark' ? 'white' : 'black'
   },
   termText: {
     fontFamily: 'Cochin',
