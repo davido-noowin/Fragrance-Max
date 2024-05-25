@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Image } from 'react-native';
+import { View, TextInput, Button, StyleSheet, Image, Touchable } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -23,7 +24,7 @@ const LoginPage = () => {
         keyboardType="email-address"
         autoCapitalize="none"
       />
-      <Button title="Log In" onPress={handleLogin} />
+      <Button title="Login" onPress={handleLogin} />
     </View>
   );
 };
@@ -40,6 +41,17 @@ const styles = StyleSheet.create({
     borderRadius: 100, 
     alignSelf: 'center',
     marginBottom: 16,
+  },
+  button: {
+    backgroundColor: 'gray',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginVertical: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
   },
   input: {
     height: 40,
