@@ -20,7 +20,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={"#cc8976"} />
           ),
         }}
       />
@@ -29,7 +29,7 @@ export default function TabLayout() {
         options={{
           title: 'Learn',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={'#cc8976'} />
           ),
         }}
         />
@@ -47,7 +47,7 @@ export default function TabLayout() {
         options={{
           title: 'Quiz',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'help-circle' : 'help-circle-outline'} color={'#cc8976'} />
           ),
         }}
         />
@@ -56,7 +56,16 @@ export default function TabLayout() {
         options={{
           title: 'Collection',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'person' : 'person'} color={color} />
+            <TabBarIcon name={focused ? 'person' : 'person-outline'} color={'#cc8976'} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="reccomendationTab"
+        options={{
+          title: 'My Recs',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'star' : 'star-outline'} color={'#cc8976'} />
           ),
         }}
       />

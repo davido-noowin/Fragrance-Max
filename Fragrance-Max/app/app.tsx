@@ -9,7 +9,7 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
-    <Tab.Navigator initialRouteName="login">
+    <Tab.Navigator initialRouteName="index">
       <Tab.Screen name="login" component={LoginPage} />
       <Tab.Screen name="index" component={HomeScreen} />
     </Tab.Navigator>
@@ -19,7 +19,7 @@ const TabNavigator = () => {
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="login">
+      <Stack.Navigator initialRouteName="index">
         <Stack.Screen name="login" component={TabNavigator} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>

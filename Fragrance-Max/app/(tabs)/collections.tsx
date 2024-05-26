@@ -1,25 +1,25 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { ScrollView, View, Text, Image, StyleSheet } from 'react-native';
 
 const fragrances = Array(10).fill({
-  name: 'Fragrance Name',
-  brand: 'Fragrance Brand',
-  image: 'path_to_image',
+  name: 'Sauvage Elixir',
+  brand: 'Dior',
+  image: '',
 });
 
 const Collections = () => {
-  return (
-    <View style={styles.container}>
-      {fragrances.map((fragrance, index) => (
-        <View key={index} style={styles.card}>
-          <Image source={{ uri: fragrance.image }} style={styles.image} />
-          <Text style={styles.name}>{fragrance.name}</Text>
-          <Text style={styles.brand}>{fragrance.brand}</Text>
-        </View>
-      ))}
-    </View>
-  );
-};
+    return (
+      <ScrollView style={styles.container}>
+        {fragrances.map((fragrance, index) => (
+          <View key={index} style={styles.card}>
+            <Image source={{ uri: fragrance.image }} style={styles.image} />
+            <Text style={styles.name}>{fragrance.name}</Text>
+            <Text style={styles.brand}>{fragrance.brand}</Text>
+          </View>
+        ))}
+      </ScrollView>
+    );
+  };
 
 const styles = StyleSheet.create({
   container: {
