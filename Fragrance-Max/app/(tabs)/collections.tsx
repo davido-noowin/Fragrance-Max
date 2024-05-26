@@ -1,11 +1,58 @@
 import React from 'react';
 import { ScrollView, View, Text, Image, StyleSheet } from 'react-native';
 
-const fragrances = Array(10).fill({
-  name: 'Sauvage Elixir',
-  brand: 'Dior',
-  image: '',
-});
+const fragrances = [
+{
+    name: 'Sauvage Elixir',
+    brand: 'Dior',
+    image: require('@/assets/images/dior_sauvage_elixir.jpg'),
+},
+{
+    name: 'Le Male',
+    brand: 'Jean Paul Gaultier',
+    image: require('@/assets/images/jpg_le_male.jpg'),
+},
+{
+    name: 'Acqua di Gio',
+    brand: 'Giorgio Armani',
+    image: require('@/assets/images/acqua_di_gio.jpg'),
+},
+{
+    name: 'Spongebob Squarepants Eau De Toilette',
+    brand: 'Spongebob Squarepants',
+    image: require('spongebob.jpg'),
+},
+{
+    name: 'Homme',
+    brand: 'Dior',
+    image: require('dior_homme.jpg'),
+},
+{
+    name: 'Eros',
+    brand: 'Versace',
+    image: require('versace_eros.jpg'),
+},
+{
+    name: 'Bleu',
+    brand: 'Chanel',
+    image: require('bleu.jpeg'),
+},
+{
+    name: 'Blue',
+    brand: 'Nautica',
+    image: require('nautica_blue.jpg'),
+},
+{
+    name: 'Phantom Parfum',
+    brand: 'Paco Rabanne',
+    image: require('phantom.jpg'),
+},
+{
+    name: 'Wood Sage & Sea Salt',
+    brand: 'Jo Malone',
+    image: require('jo_malone.jpg'),
+},
+];
 
 const Collections = () => {
     return (
@@ -25,6 +72,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
+    backgroundColor: '#b2d8e6',
   },
   card: {
     flex: 1,
