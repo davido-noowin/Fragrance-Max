@@ -34,7 +34,7 @@ const TextInANest = () => {
           </Text>
           <View
                 style={{
-                  borderBottomColor: 'black',
+                  borderBottomColor: textColor,
                   borderBottomWidth: 2,
                 }}
           />
