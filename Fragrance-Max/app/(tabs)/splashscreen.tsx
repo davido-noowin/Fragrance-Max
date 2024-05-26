@@ -19,10 +19,8 @@ const CustomSplashScreen = () => {
           duration: 2000,
           useNativeDriver: true,
         }
-      ).start(() => {
-        navigation.navigate('login');
-      });
-    }, [navigation, fadeAnim]);
+      )
+    }, [fadeAnim]);
   
     return (
       <View style={styles.container}>
