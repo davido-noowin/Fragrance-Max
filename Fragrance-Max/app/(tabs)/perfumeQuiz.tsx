@@ -127,6 +127,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 16,
+    backgroundColor: '#b2d8e6',
   },
   scrollContainer: {
     flexGrow: 1,
@@ -139,6 +140,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 100,
     height: 100,
+    borderRadius: 30,
     alignSelf: 'center',
     marginBottom: 16,
   },

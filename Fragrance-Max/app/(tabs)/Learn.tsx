@@ -22,7 +22,7 @@ const TextInANest = () => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <View>
+        <View style={styles.container}>
           <Text>
             <Text style={[styles.titleText, { color: textColor}]} onPress={onPressTitle}>
               {titleText}
@@ -103,6 +103,10 @@ const TextInANest = () => {
 const styles = StyleSheet.create({
   brandName: {
     color: '#cc8976',
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#b2d8e6', // Add this line
   },
   baseText: {
     fontFamily: 'Cochin',
