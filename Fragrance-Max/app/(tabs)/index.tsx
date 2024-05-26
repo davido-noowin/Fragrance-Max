@@ -74,6 +74,17 @@ const styles = StyleSheet.create({
     left: 0,
     position: 'absolute',
   },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+  logo: {
+    width: 100,
+    height: 100,
+    borderRadius: 100,
+  },
 });
 
 export default HomeScreen;
