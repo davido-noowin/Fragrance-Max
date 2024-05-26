@@ -1,6 +1,6 @@
 # pip install uvicorn
 # pip install fastapi
-# to run: python -m uvicorn main:app --reload
+# to run: python -m uvicorn main:app --reload --host 0.0.0.0
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
