@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {useColorScheme, View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import axios from 'axios';
 
 const questions = [
   {
@@ -17,7 +16,7 @@ const questions = [
   },
   {
     question: 'Which season do you want this fragrance for?',
-    options: ['Spring', 'Summer', 'Fall', 'Winter', 'All-year round'],
+    options: ['Spring', 'Summer', 'Fall', 'Winter', 'Year-round'],
   },
   {
     question: 'What is your age group?',
@@ -31,28 +30,46 @@ const questions = [
 
 const QuizPage = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState<string[]>([]);
+  const [answers, setAnswers] = useState({
+    gender : '',
+    scent_pref : '',
+    occasion : '',
+    season : '',
+    age_group : '',
+    intensity : '',
+  });
   const colorScheme = useColorScheme();
   const textColor = colorScheme === 'dark' ? 'white' : 'black';
   const handleOptionPress = (options: string) => {
-    setAnswers((prevAnswers) => [...prevAnswers, options]);
+    setAnswers((prevAnswers) => {
+      const key = Object.keys(prevAnswers)[currentQuestionIndex];
+      return { ...prevAnswers, [key] : options };
+    });
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
   };
 
   const handleSurveyCompletion = () => {
    //subject to change
-    fetch('blah blah blah url for backend', {
+   console.log(answers);
+    fetch('http://169.234.118.58:8000/api/recommendations', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ answers }),
+      body: JSON.stringify( answers ),
     })
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.error('a way to catch non posting error', error));
   };
   //subject to change
+
+  useEffect(() => {
+    if (currentQuestionIndex >= questions.length) {
+      handleSurveyCompletion();
+    }
+  }, [currentQuestionIndex, questions.length]);
+
   if (currentQuestionIndex >= questions.length) {
     return (
       <View style={styles.container}>

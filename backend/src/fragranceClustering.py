@@ -2,23 +2,33 @@
 
 from dataset import DATASET
 from sklearn.preprocessing import StandardScaler
-from custom_tokenizer import custom_tokenizer
+from sklearn.feature_extraction.text import CountVectorizer
+# from custom_tokenizer import custom_tokenizer
 import numpy as np
 import pandas as pd
 import pickle
 
 
+def custom_tokenizer(text:str):
+    '''
+    Defines the custome tokenizer used for the bag of words to convert 
+    entries in the notes column from strings separated by commas to a tokenized array.
+    '''
+    return text.split(',')
+
+
 class FragranceRecommendation:
     def __init__(self):
-        with open("../database/fragrance_vectorizer.pkl", "rb") as f:
-            self.loaded_vectorizer = pickle.load(f)
-            self.loaded_vectorizer.tokenizer = custom_tokenizer
+
+        DATASET['notes'] = DATASET['notes'].fillna('')
+        
+        self.loaded_vectorizer = CountVectorizer(tokenizer=custom_tokenizer)
 
         with open("../database/kmeans_model.pkl", "rb") as f:
             self.loaded_kmeans_model = pickle.load(f)
 
-        with open("../database/bag_of_words.pkl", "rb") as f:
-            loaded_bag_of_words = pickle.load(f)
+        
+        loaded_bag_of_words = self.loaded_vectorizer.fit_transform(DATASET['notes'])
 
         # Convert categorical features to numeric using one-hot encoding
         self.additional_features = pd.get_dummies(DATASET[['sillage', 'longevity', 'gender', 'Age Group', 'Season', 'Occasion']],
@@ -47,7 +57,7 @@ class FragranceRecommendation:
             "Very strong": "sillage_enormous"
         }
 
-        return longevity_map.get(intensity, "Moderate"), sillage_map.get(intensity, "Moderate")
+        return longevity_map.get(intensity, "intensity_moderate"), sillage_map.get(intensity, "sillage_moderate")
 
     def create_user_profile(self, scent_pref: str, intensity: str, gender: str, age_group: str, occasion: str, season: str):
         '''
@@ -84,3 +94,22 @@ class FragranceRecommendation:
         recommended_fragrances_info = recommendation.sample(n=25)
 
         return recommended_fragrances_info
+
+
+'''
+rec = FragranceRecommendation()
+user_input = rec.create_user_profile(
+            "Floral (roses, jasmine, lilies)", 
+            "Moderate",
+            "male",
+            "20-30", 
+            'Casual', 
+            "Fall",
+        )
+user_cluster = rec.loaded_kmeans_model.predict(user_input)
+recommended_fragrances = DATASET[DATASET['cluster'] == user_cluster[0]]
+recommended_fragrances_info = rec.filter_recommendations(recommended_fragrances, "male", "Fall", "Casual")
+print(recommended_fragrances_info)
+
+#summary = geminiSummary(recommended_fragrances_info.to_string(), user_profile.gender, user_profile.season, user_profile.occasion)
+''' 

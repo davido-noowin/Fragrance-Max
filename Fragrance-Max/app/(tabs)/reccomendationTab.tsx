@@ -11,22 +11,6 @@ const RecommendationTab = () => {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
   const [selectedRecommendation, setSelectedRecommendation] = useState<Recommendation | null>(null);
 
-  // Fetch recommendations from your backend server
-  useEffect(() => {
-    fetch('http://18.216.32.79:8000/api/recommendations/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        // Your data here
-      }),
-    })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.error('Failed to post data:', error));
-  }, []);
-
   const handleRecommendationPress = (recommendation: Recommendation) => {
     setSelectedRecommendation(recommendation);
   };
