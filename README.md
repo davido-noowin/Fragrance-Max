@@ -18,7 +18,8 @@ Project created using `npx create-expo-app@latest`
 ---
 ### Backend Setup
 
-- Install dependencies `pip install openpyxl scikit-learn numpy pandas fastapi uvicorn google-generativeai`
+- Install dependencies `pip install openpyxl scikit-learn numpy pandas fastapi uvicorn google-generativeai pymongo dnspython`
+
 
 - CD into backend/src
 

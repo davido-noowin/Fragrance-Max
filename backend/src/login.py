@@ -20,7 +20,7 @@ def login(username: User):
     try:
         db = client['Fragrances']
         query = db.Email.find({
-            'email': username
+            'email': username.email
             }, {"email" : 1, "_id" : 0})
 
         result_list = [doc for doc in query]

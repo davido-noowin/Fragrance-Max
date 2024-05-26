@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react';
-import {Animated, useColorScheme, SafeAreaView, View, TextInput, Button, StyleSheet, Image, TouchableOpacity,Text } from 'react-native';
+import React, { useEffect, useState, useRef, useContext, createContext} from 'react';
+import { Animated, useColorScheme, View, TextInput, StyleSheet, Image, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import CustomSplashScreen from './(tabs)/splashscreen';
+import { AuthContext } from '@/app/auth'; // Ensure correct import path
 
 type RootStackParamList = {
   login: undefined;
@@ -15,38 +15,39 @@ const LoginPage = () => {
   const colorScheme = useColorScheme();
   const textColor = colorScheme === 'dark' ? 'white' : 'black';
 
+
+const authContext = useContext(AuthContext);
+
+if (!authContext) {
+  throw new Error('AuthContext must be used within an AuthProvider');
+}
+
+const { setEmail: setAuthEmail } = authContext;
+
   const handleLogin = () => {
-    console.log(`Logging in with email: ${email}`); // Replace with actual login logic
-    navigation.navigate('index'); // Ensure this matches the route name defined in App.tsx
-  };
+    console.log(`Logging in with email: ${email}`);
 
-  const CustomSplashScreen = () => {
-    const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'login'>>();
-    const fadeAnim = useRef(new Animated.Value(0)).current;  // Initial value for opacity: 0
-  
-    useEffect(() => {
-      Animated.timing(
-        fadeAnim,
-        {
-          toValue: 1,
-          duration: 2000,
-          useNativeDriver: true,
+    fetch('http://169.234.118.58:8000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        if (data[0]?.email) {
+          setAuthEmail(data[0].email);
+          navigation.navigate('index');
+        } else {
+          console.error('Failed to log in:', data.message);
         }
-      ).start(() => {
-        navigation.navigate('login');
+      })
+      .catch(error => {
+        console.error('Error:', error);
       });
-    }, [navigation, fadeAnim]);
-  
-    return (
-      <View style={styles.container}>
-        <Animated.Image 
-          source={require('@/assets/images/Logo-fragrance.jpg')} 
-          style={{ ...styles.logo, opacity: fadeAnim }} 
-        />
-      </View>
-    );
   };
-
 
   const handleSignUp = () => {
     console.log(`Signing up with email: ${email}`); // Replace with actual sign-up logic
@@ -54,12 +55,9 @@ const LoginPage = () => {
 
   return (
     <View style={styles.container}>
-      <Image 
-        source={require('@/assets/images/Logo-fragrance.jpg')} 
-        style={styles.logo} 
-      />            
+      <Image source={require('@/assets/images/Logo-fragrance.jpg')} style={styles.logo} />
       <TextInput
-        style={[styles.input, { color: textColor}]}
+        style={[styles.input, { color: textColor }]}
         onChangeText={setEmail}
         value={email}
         placeholder="Email"
@@ -85,7 +83,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 300,
     height: 300,
-    borderRadius: 100, 
+    borderRadius: 100,
     alignSelf: 'center',
     marginBottom: 16,
   },
@@ -108,10 +106,5 @@ const styles = StyleSheet.create({
     padding: 8,
   },
 });
-
-const RealLogin  = {
-  LoginPage,
-  CustomSplashScreen
-}
 
 export default LoginPage;

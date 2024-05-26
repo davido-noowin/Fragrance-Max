@@ -3,7 +3,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import LoginPage from '@/app/login';
 import HomeScreen from '@/app/(tabs)/index';
-import CustomSplashScreen from '@/app/(tabs)/splashscreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -20,8 +19,7 @@ const TabNavigator = () => {
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="splashscreen">
-        <Stack.Screen name="splashscreen" component={CustomSplashScreen} options={{ headerShown: false }} />
+      <Stack.Navigator initialRouteName="login">
         <Stack.Screen name="login" component={TabNavigator} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
