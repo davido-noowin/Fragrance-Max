@@ -5,7 +5,7 @@ const fragrances = [
 {
     name: 'Sauvage Elixir',
     brand: 'Dior',
-    image: require('@/assets/images/dior_sauvage_elixir.jpg'),
+    image: require('@/assets/images/dior-sauvage-elixir.jpg'),
 },
 {
     name: 'Le Male',
