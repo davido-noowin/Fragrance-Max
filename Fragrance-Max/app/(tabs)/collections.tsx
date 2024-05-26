@@ -5,7 +5,7 @@ const fragrances = [
 {
     name: 'Sauvage Elixir',
     brand: 'Dior',
-    image: require('@/assets/images/dior-sauvage-elixir.jpg'),
+    image: require('@assets/images/dior-sauvage-elixir.jpg'),
 },
 {
     name: 'Le Male',
@@ -59,7 +59,7 @@ const Collections = () => {
       <ScrollView style={styles.container}>
         {fragrances.map((fragrance, index) => (
           <View key={index} style={styles.card}>
-            <Image source={{ uri: fragrance.image }} style={styles.image} />
+            <Image source={fragrance.image } style={styles.image} />
             <Text style={styles.name}>{fragrance.name}</Text>
             <Text style={styles.brand}>{fragrance.brand}</Text>
           </View>
