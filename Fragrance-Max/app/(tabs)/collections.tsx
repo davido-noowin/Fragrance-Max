@@ -20,37 +20,37 @@ const fragrances = [
 {
     name: 'Spongebob Squarepants Eau De Toilette',
     brand: 'Spongebob Squarepants',
-    image: require('spongebob.jpg'),
+    image: require('@/assets/images/spongebob.jpg'),
 },
 {
     name: 'Homme',
     brand: 'Dior',
-    image: require('dior_homme.jpg'),
+    image: require('@/assets/images/dior_homme.jpg'),
 },
 {
     name: 'Eros',
     brand: 'Versace',
-    image: require('versace_eros.jpg'),
+    image: require('@/assets/images/versace_eros.jpg'),
 },
 {
     name: 'Bleu',
     brand: 'Chanel',
-    image: require('bleu.jpeg'),
+    image: require('@/assets/images/bleu.jpeg'),
 },
 {
     name: 'Blue',
     brand: 'Nautica',
-    image: require('nautica_blue.jpg'),
+    image: require('@/assets/images/nautica_blue.jpg'),
 },
 {
     name: 'Phantom Parfum',
     brand: 'Paco Rabanne',
-    image: require('phantom.jpg'),
+    image: require('@/assets/images/phantom.jpg'),
 },
 {
     name: 'Wood Sage & Sea Salt',
     brand: 'Jo Malone',
-    image: require('jo_malone.jpg'),
+    image: require('@/assets/images/jo_malone.jpg'),
 },
 ];
 
