@@ -5,12 +5,12 @@ const fragrances = [
 {
     name: 'Sauvage Elixir',
     brand: 'Dior',
-    image: require('@assets/images/dior-sauvage-elixir.jpg'),
+    image: require('@/assets/images/dior-sauvage-elixir.jpg'),
 },
 {
     name: 'Le Male',
     brand: 'Jean Paul Gaultier',
-    image: require('@/assets/images/jpg_le_male.jpg'),
+    image: require('@/assets/images/le_male.png'),
 },
 {
     name: 'Acqua di Gio',
