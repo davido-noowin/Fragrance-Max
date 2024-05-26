@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {useColorScheme, View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import axios from 'axios';
 
 const questions = [
   {
@@ -12,7 +13,7 @@ const questions = [
   },
   {
     question: 'What is the primary occasion for which you are selecting a fragrance?',
-    options: ['Everyday use', 'Work environment', 'Special occasions', 'Night out', 'Relaxing at home'],
+    options: ['Casual', 'Formal', 'General', 'Office'],
   },
   {
     question: 'Which season do you want this fragrance for?',
@@ -37,6 +38,21 @@ const QuizPage = () => {
     setAnswers((prevAnswers) => [...prevAnswers, options]);
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
   };
+
+  const handleSurveyCompletion = () => {
+   //subject to change
+    fetch('blah blah blah url for backend', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ answers }),
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('a way to catch non posting error', error));
+  };
+  //subject to change
   if (currentQuestionIndex >= questions.length) {
     return (
       <View style={styles.container}>
