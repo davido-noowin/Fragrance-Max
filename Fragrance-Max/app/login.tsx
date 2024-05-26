@@ -53,6 +53,18 @@ const { setEmail: setAuthEmail } = authContext;
     console.log(`Signing up with email: ${email}`); // Replace with actual sign-up logic
   };
 
+  const fadeAnim = useRef(new Animated.Value(0)).current;  // Initial value for opacity: 0
+
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 3000,
+      useNativeDriver: true,
+    }).start(() => {
+      navigation.navigate('login');
+    });
+  }, [navigation, fadeAnim]);
+
   return (
     <View style={styles.container}>
       <Image source={require('@/assets/images/Logo-fragrance.jpg')} style={styles.logo} />
@@ -79,13 +91,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 16,
+    backgroundColor: 'white',
   },
   logo: {
     width: 300,
     height: 300,
     borderRadius: 100,
     alignSelf: 'center',
-    marginBottom: 16,
+    marginTop: 100,
+  },
+  input: {
+    height: 50,
+    width: '100%',
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 5,
+    marginBottom: 10,
+    paddingLeft: 10,
   },
   button: {
     backgroundColor: 'gray',
@@ -96,14 +118,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white',
-    fontSize: 16,
-  },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 16,
-    padding: 8,
+    fontSize: 18,
   },
 });
 
