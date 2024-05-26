@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: 'center',
     marginTop: 20,
+    fontFamily: 'Roboto Slab',
   },
   container: {
     flex: 1,
