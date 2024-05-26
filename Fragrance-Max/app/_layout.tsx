@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
-import RealLogin from './login';
 import CustomSplashScreen from './(tabs)/splashscreen';
 import LoginPage from './login';
 
