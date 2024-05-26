@@ -7,7 +7,7 @@ type RootStackParamList = {
   login: undefined;
 };
 
-const SplashScreen = () => {
+const CustomSplashScreen = () => {
     const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'login'>>();
     const fadeAnim = useRef(new Animated.Value(0)).current;  // Initial value for opacity: 0
   
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SplashScreen;
+export default CustomSplashScreen;

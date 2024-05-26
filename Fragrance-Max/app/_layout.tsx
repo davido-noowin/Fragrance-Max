@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import LoginPage from './login';
+import CustomSplashScreen from './(tabs)/splashscreen';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -24,6 +26,14 @@ export default function RootLayout() {
 
   if (!loaded) {
     return null;
+  }
+
+  const auth = null;
+
+  if (!auth) {
+    return (
+      <LoginPage/>
+    );
   }
 
   return (
