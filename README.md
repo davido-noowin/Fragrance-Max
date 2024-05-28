@@ -3,6 +3,7 @@
 Coded by: Brandy Nguyen, David Nguyen, Huan Nguyen
 
 Project created using `npx create-expo-app@latest`
+
 [Demo video](https://youtu.be/kjbxZJkhO7M)
 
 ---
