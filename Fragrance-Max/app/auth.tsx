@@ -1,24 +1,18 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useContext } from 'react';
 
-interface AuthContextType {
-  email: string;
-  setEmail: (newEmail: string) => void;
+export interface AuthContextType {
+  user: string;
+  setUser: (newEmail: string) => void;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | undefined>({} as AuthContextType);
 
-const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [email, setEmail] = useState<string>('');
+export function useUserContext() {
+  const user = useContext(AuthContext);
 
-  const handleSetEmail = (newEmail: string) => {
-    setEmail(newEmail);
-  };
+  if (user === undefined) {
+    throw new Error("must be used with an AuthContext");
+  }
 
-  return (
-    <AuthContext.Provider value={{ email, setEmail: handleSetEmail }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
-
-export { AuthContext, AuthProvider };
+  return user;
+}

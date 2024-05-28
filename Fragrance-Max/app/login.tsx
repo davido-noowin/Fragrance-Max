@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useContext, createContext} from 're
 import { Animated, useColorScheme, View, TextInput, StyleSheet, Image, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { AuthContext } from '@/app/auth'; // Ensure correct import path
+import { useUserContext } from '@/app/auth'; // Ensure correct import path
 
 type RootStackParamList = {
   login: undefined;
@@ -15,19 +15,13 @@ const LoginPage = () => {
   const colorScheme = useColorScheme();
   const textColor = colorScheme === 'dark' ? 'white' : 'black';
 
-
-const authContext = useContext(AuthContext);
-
-if (!authContext) {
-  throw new Error('AuthContext must be used within an AuthProvider');
-}
-
-const { setEmail: setAuthEmail } = authContext;
+  const {user, setUser} = useUserContext();
+  
 
   const handleLogin = () => {
     console.log(`Logging in with email: ${email}`);
 
-    fetch('http://169.234.118.58:8000/api/login', {
+    fetch('http://192.168.0.25:8000/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -36,10 +30,11 @@ const { setEmail: setAuthEmail } = authContext;
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         if (data[0]?.email) {
-          setAuthEmail(data[0].email);
-          navigation.navigate('index');
+          console.log(data[0]?.email);
+          let user_email = data[0]?.email;
+          setUser(user_email);
+          console.log("set user:" , user);
         } else {
           console.error('Failed to log in:', data.message);
         }
@@ -98,7 +93,7 @@ const styles = StyleSheet.create({
     height: 300,
     borderRadius: 100,
     alignSelf: 'center',
-    marginTop: 100,
+    marginBottom: 50
   },
   input: {
     height: 50,

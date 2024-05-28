@@ -10,7 +10,7 @@ export default function TabLayout() {
 
   return (
     <Tabs
-      initialRouteName='login'
+      initialRouteName='index'
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
@@ -33,15 +33,6 @@ export default function TabLayout() {
           ),
         }}
         />
-      {/* <Tabs.Screen
-        name="login"
-        options={{
-          title: 'Login',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'person' : 'person'} color={color} />
-          ),
-        }}
-        /> */}
         <Tabs.Screen
         name="perfumeQuiz"
         options={{
