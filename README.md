@@ -36,7 +36,8 @@ Project created using `npx create-expo-app@latest`
 - Dataset was retrieved from along with a bit of data preprocessing: https://github.com/rdemarqui/perfume_recommender
 - FastAPI guide: https://fastapi.tiangolo.com/
 - Google Gemini API: https://ai.google.dev/
-
+- Jupyter Notebook Install: https://jupyter.org/install
+  
 ---
 ### App Photos
 Homepage:
