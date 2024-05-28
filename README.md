@@ -3,6 +3,7 @@
 Coded by: Brandy Nguyen, David Nguyen, Huan Nguyen
 
 Project created using `npx create-expo-app@latest`
+[Demo video](https://youtu.be/kjbxZJkhO7M)
 
 ---
 ### How To Run:
@@ -26,5 +27,23 @@ Project created using `npx create-expo-app@latest`
 - to run locally: `python -m uvicorn main:app --reload`
 
 - to run on deployment machine: TBA
+
 ---
 ### References:
+- React Native setup guide: https://reactnative.dev/docs/environment-setup
+- React Navigation: https://reactnavigation.org/docs/getting-started
+- React Native core components: https://reactnative.dev/docs/components-and-apis
+- Dataset was retrieved from along with a bit of data preprocessing: https://github.com/rdemarqui/perfume_recommender
+- FastAPI guide: https://fastapi.tiangolo.com/
+- Google Gemini API: https://ai.google.dev/
+
+---
+### App Photos
+Homepage:
+![homepage](./Fragrance-max/assets/images/homepage.png)
+Terms Learn page:
+![learnpage](./Fragrance-Max/assets/images/Learn.png)
+Quiz page:
+![quizpage](./Fragrance-Max/assets/images/quiz.png)
+Collections page:
+![collections](./Fragrance-Max/assets/images/Collection.png)
