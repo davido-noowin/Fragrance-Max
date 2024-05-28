@@ -41,8 +41,7 @@ Project created using `npx create-expo-app@latest`
 ---
 ### App Photos
 Homepage:
-
-![homepage](./Fragrance-max/assets/images/homepage.png)
+![homepage](./Fragrance-Max/assets/images/homepage.png)
 Terms Learn page:
 ![learnpage](./Fragrance-Max/assets/images/Learn.png)
 Quiz page:
