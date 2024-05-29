@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useContext, createContext} from 'react';
+import React, { useEffect, useState, useRef} from 'react';
 import { Animated, useColorScheme, View, TextInput, StyleSheet, Image, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -34,7 +34,6 @@ const LoginPage = () => {
           console.log(data[0]?.email);
           let user_email = data[0]?.email;
           setUser(user_email);
-          console.log("set user:" , user);
         } else {
           console.error('Failed to log in:', data.message);
         }
