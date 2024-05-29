@@ -5,7 +5,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from root import router as home
-from recommendation import router as recommendation
+#from recommendation import router as recommendation
 from login import router as login
 
 app = FastAPI()
@@ -19,5 +19,5 @@ app.add_middleware(
 )
 
 app.include_router(home)
-app.include_router(recommendation)
+#app.include_router(recommendation)
 app.include_router(login)
