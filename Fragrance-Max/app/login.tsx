@@ -21,7 +21,7 @@ const LoginPage = () => {
   const handleLogin = () => {
     console.log(`Logging in with email: ${email}`);
 
-    fetch('http://192.168.0.25:8000/api/login', {
+    fetch('http://3.21.163.145:8000//api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
