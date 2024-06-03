@@ -1,37 +1,39 @@
 # Script that handles the machine learning aspect of the backend
 
-from dataset import DATASET
 from sklearn.preprocessing import StandardScaler
 from sklearn.feature_extraction.text import CountVectorizer
-# from custom_tokenizer import custom_tokenizer
 import numpy as np
 import pandas as pd
-import pickle
 
 
-def custom_tokenizer(text:str):
-    '''
-    Defines the custome tokenizer used for the bag of words to convert 
-    entries in the notes column from strings separated by commas to a tokenized array.
-    '''
-    return text.split(',')
+longevity_map = {
+    "Light and subtle": "longevity_weak",
+    "Moderate": "longevity_moderate",
+    "Strong": "longevity_long lasting",
+    "Very strong": "longevity_eternal"
+}
+        
+sillage_map = {
+    "Light and subtle": "sillage_intimate",
+    "Moderate": "sillage_moderate",
+    "Strong": "sillage_strong",
+    "Very strong": "sillage_enormous"
+}
 
 
 class FragranceRecommendation:
-    def __init__(self):
+    def __init__(self, dataset: pd.DataFrame, model, vectorizer: CountVectorizer):
 
-        DATASET['notes'] = DATASET['notes'].fillna('')
+        dataset['notes'] = dataset['notes'].fillna('')
         
-        self.loaded_vectorizer = CountVectorizer(tokenizer=custom_tokenizer)
+        self.loaded_vectorizer = vectorizer
 
-        with open("../database/kmeans_model.pkl", "rb") as f:
-            self.loaded_kmeans_model = pickle.load(f)
-
+        self.loaded_kmeans_model = model
         
-        loaded_bag_of_words = self.loaded_vectorizer.fit_transform(DATASET['notes'])
+        loaded_bag_of_words = self.loaded_vectorizer.fit_transform(dataset['notes'])
 
         # Convert categorical features to numeric using one-hot encoding
-        self.additional_features = pd.get_dummies(DATASET[['sillage', 'longevity', 'gender', 'Age Group', 'Season', 'Occasion']],
+        self.additional_features = pd.get_dummies(dataset[['sillage', 'longevity', 'gender', 'Age Group', 'Season', 'Occasion']],
                                                    columns=['sillage', 'longevity', 'gender', 'Age Group', 'Season', 'Occasion'])
         self.features = pd.concat([pd.DataFrame(loaded_bag_of_words.toarray()), self.additional_features.reset_index(drop=True)], axis=1)
         self.features.columns = self.features.columns.astype(str)
@@ -39,25 +41,13 @@ class FragranceRecommendation:
         self.scaler = StandardScaler()
         self.scaled_features = self.scaler.fit_transform(self.features)
 
+
     def map_intensity(self, intensity: str):
         '''
         Maps the quiz responses under intensity to longevity and sillage.
         '''
-        longevity_map = {
-            "Light and subtle": "longevity_weak",
-            "Moderate": "longevity_moderate",
-            "Strong": "longevity_long lasting",
-            "Very strong": "longevity_eternal"
-        }
-        
-        sillage_map = {
-            "Light and subtle": "sillage_intimate",
-            "Moderate": "sillage_moderate",
-            "Strong": "sillage_strong",
-            "Very strong": "sillage_enormous"
-        }
-
         return longevity_map.get(intensity, "intensity_moderate"), sillage_map.get(intensity, "sillage_moderate")
+
 
     def create_user_profile(self, scent_pref: str, intensity: str, gender: str, age_group: str, occasion: str, season: str):
         '''
@@ -82,7 +72,13 @@ class FragranceRecommendation:
         user_features = self.scaler.transform(user_features)
         return user_features
 
+
     def filter_recommendations(self, recommendation: pd.DataFrame, gender: str, season: str, occasion: str):
+        '''
+        Since clustering is not perfect, we will further filter the results to match the quiz more. After getting
+        the results, the columns may not perfectly sync up with what the user prefers. To try and get closer to what
+        the user might like, we filter based on the results of the quiz.
+        '''
         recommendation = recommendation[
             (recommendation['gender'] == gender) | (recommendation['gender'] == 'unisex')
             & (recommendation['Age Group'] == occasion)
@@ -90,8 +86,8 @@ class FragranceRecommendation:
             & (recommendation['Occasion'] == occasion)
         ]
 
-        # Select a random 25 recommendations
-        recommended_fragrances_info = recommendation.sample(n=25)
+        # Select a random 7 recommendations
+        recommended_fragrances_info = recommendation.sample(n=7)
 
         return recommended_fragrances_info
 

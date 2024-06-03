@@ -3,9 +3,9 @@
 
 import google.generativeai as genai
 
-QUERY_STRING = "Given this collection of fragrances pick out 10 for me with the following properties: "
+QUERY_STRING = "Given this collection of fragrances pick out 7 for me with the following properties: "
 
-def geminiSummary(recommendations:str, gender:str, season:str, occasion:str) -> dict:
+def geminiSummary(recommendations:str, gender:str, season:str, occasion:str, ai_model: genai.GenerativeModel) -> dict:
   '''
   Looks at the recommendation results and bundles it with a summary, brand, and fragrance
   '''
@@ -21,8 +21,7 @@ def geminiSummary(recommendations:str, gender:str, season:str, occasion:str) -> 
                     Can you also give me the response in JSON format with the brand, fragrance, and description?"
   model_query = QUERY_STRING + follow_up_query + recommendations
   
-  model = genai.GenerativeModel()
-  response = model.generate_content(model_query)
+  response = ai_model.generate_content(model_query)
 
   answer = response.text.split("```")[1].split("json")[1]
 
