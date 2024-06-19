@@ -24,13 +24,25 @@ sillage_map = {
 class FragranceRecommendation:
     def __init__(self, dataset: pd.DataFrame, model, vectorizer: CountVectorizer):
 
-        dataset['notes'] = dataset['notes'].fillna('')
+        try:
+            dataset['notes'] = dataset['notes'].fillna('')
+        except Exception as e:
+            print(f"Unable to load the dataset: {e}")
         
-        self.loaded_vectorizer = vectorizer
+        try:
+            self.loaded_vectorizer = vectorizer
+        except Exception as e:
+            print(f"Unable to load the vectorizer: {e}")
 
-        self.loaded_kmeans_model = model
+        try:
+            self.loaded_kmeans_model = model
+        except Exception as e:
+            print(f"Unable to load the ml model: {e}")
         
-        loaded_bag_of_words = self.loaded_vectorizer.fit_transform(dataset['notes'])
+        try:
+            loaded_bag_of_words = self.loaded_vectorizer.fit_transform(dataset['notes'])
+        except Exception as e:
+            print(f"Unable to produce a bag of words: {e}")
 
         # Convert categorical features to numeric using one-hot encoding
         self.additional_features = pd.get_dummies(dataset[['sillage', 'longevity', 'gender', 'Age Group', 'Season', 'Occasion']],

@@ -60,7 +60,7 @@ const QuizPage = () => {
   const handleSurveyCompletion = () => {
    //subject to change
    console.log(answers);
-    fetch('http://169.234.118.58:8000/api/recommendations', {
+    fetch('http://192.168.0.25:8000/api/recommendations', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

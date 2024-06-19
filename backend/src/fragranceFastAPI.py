@@ -27,4 +27,12 @@ class FragranceAPI(FastAPI):
 
         self.vectorizer = CountVectorizer(tokenizer=custom_tokenizer)
 
-        self.ai_model = genai.GenerativeModel()
+        with open("gptkey.txt", "r") as api_key:
+            api_key = api_key.read()
+
+        genai.configure(api_key=api_key)
+        try:
+            self.ai_model = genai.GenerativeModel()
+        except Exception as e:
+            print(f"Error creating gemini model: {e}")
+            self.ai_model = None
