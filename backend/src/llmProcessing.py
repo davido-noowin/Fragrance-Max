@@ -9,6 +9,7 @@ def geminiSummary(recommendations:str, gender:str, season:str, occasion:str, ai_
     '''
     Looks at the recommendation results and bundles it with a summary, brand, and fragrance
     '''
+    # print(f"Generating summary for the following recommendations: {recommendations}")
     follow_up_query = f"The person is a {gender}, but unisex could also apply. They are looking for a fragrance \
                       for the {season} for a {occasion} occasion. Additionally, give me a 1-3 sentence summary \
                       bundled together of the notes, the longevity, the sillage, the season, and occasion from \
@@ -18,9 +19,14 @@ def geminiSummary(recommendations:str, gender:str, season:str, occasion:str, ai_
     
     if ai_model:
       response = ai_model.generate_content(model_query)
-      answer = response.text.split("```")[1].split("json")[1]
+      try:
+        answer = response.text.split("```")[1].split("json")[1] # bugs out sometimes
+        return eval(answer)
+      except Exception as e:
+         print(f"ERROR: {e}")
+         print()
+         print(response.text)
       # print(answer)
-      return eval(answer)
     
     return [
        {
