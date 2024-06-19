@@ -21,6 +21,8 @@ def getRecommendations(request: Request, user_profile: UserProfile):
     try:
         if user_profile.gender != "Male" or user_profile.gender != "Female":
             user_profile.gender = "Unisex"
+        user_profile.gender = user_profile.gender.lower()
+        print(f"generating user recommendation with: {user_profile}")
 
         rec = FragranceRecommendation(request.app.dataset, 
                                       request.app.model,
@@ -28,7 +30,7 @@ def getRecommendations(request: Request, user_profile: UserProfile):
         user_input = rec.create_user_profile(
             user_profile.scent_pref, 
             user_profile.intensity, 
-            user_profile.gender.lower(), 
+            user_profile.gender, 
             user_profile.age_group, 
             user_profile.occasion, 
             user_profile.season,
@@ -48,8 +50,8 @@ def getRecommendations(request: Request, user_profile: UserProfile):
                                     user_profile.season, 
                                     user_profile.occasion,
                                     request.app.ai_model)
+            return JSONResponse(content=summary)
         except Exception as e:
             return JSONResponse(status_code=500, content=f"Failed to summarize the clustered fragrances: {e}")
-        return JSONResponse(content=summary)
     except Exception as e:
-        return JSONResponse(status_code=500, content=str(e))
+        return JSONResponse(status_code=500, content="big error! " + str(e))

@@ -38,7 +38,7 @@ const questions = [
 const QuizPage = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
-  const [recommendations, setRecommendations] = useState([]);
+  const [recommendations, setRecommendations] = useState<any[]>([]);
   const [answers, setAnswers] = useState({
     gender : '',
     scent_pref : '',

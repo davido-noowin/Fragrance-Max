@@ -19,7 +19,13 @@ def geminiSummary(recommendations:str, gender:str, season:str, occasion:str, ai_
     if ai_model:
       response = ai_model.generate_content(model_query)
       answer = response.text.split("```")[1].split("json")[1]
-      print(answer)
+      # print(answer)
       return eval(answer)
     
-    return {}
+    return [
+       {
+        "brand" : "Error",
+        "fragrance" : "Not Found",
+        "description" : "Gemini failed to generate our recommendations"
+      }
+    ]
