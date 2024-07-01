@@ -1,14 +1,5 @@
-import React, {useState} from 'react';
-import { useColorScheme, StyleSheet, Text, View, SafeAreaView, ScrollView, Touchable } from 'react-native';
-
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { DefaultTheme, useTheme } from '@react-navigation/native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import React from 'react';
+import { StyleSheet, Text, View, ScrollView, SafeAreaView } from 'react-native';
 
 const Learn = () => {
   const terms = [
@@ -63,29 +54,36 @@ const Learn = () => {
   ];
 
   return (
-    <ScrollView style={styles.container}>
-      {terms.map((term, index) => (
-        <View key={index} style={styles.card}>
-          <Text style={styles.name}>{term.term}</Text>
-          <Text style={styles.brand}>{term.description}</Text>
-        </View>
-      ))}
-    </ScrollView>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.scrollContainer}>
+        {terms.map((term, index) => (
+          <View key={index} style={styles.card}>
+            <Text style={styles.name}>{term.term}</Text>
+            <Text style={styles.brand}>{term.description}</Text>
+          </View>
+        ))}
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    flex: 1,
+    marginTop: 50,
+    padding: 16,
+    backgroundColor: '#b2d8e6',
+  },
   container: {
     flex: 1,
-    padding: 10,
     backgroundColor: '#b2d8e6',
   },
   card: {
     flex: 1,
-    marginBottom: 10,
+    marginBottom: 20,
     backgroundColor: '#fff',
     borderRadius: 5,
-    padding: 10,
+    padding: 16,
   },
   name: {
     fontSize: 18,

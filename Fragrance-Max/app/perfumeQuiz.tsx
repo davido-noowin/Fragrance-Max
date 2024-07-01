@@ -91,13 +91,13 @@ const QuizPage = () => {
   if (recommendations.length > 0) {
     return (
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.container}>
-          <Text style={[styles.question, { color: textColor }]}>Your Recommendations:</Text>
+        <View style={styles.resultContainer}>
+          <Text style={[styles.reccomendationText, { color: textColor }]}>Your Recommendations:</Text>
           {recommendations.map((recommendation, index) => (
             <View key={index} style={styles.recommendation}>
               <Text style={{ color: textColor, fontWeight: 'bold' }}>{recommendation.brand}</Text>
               <Text style={{ color: textColor }}>{recommendation.fragrance}</Text>
-              <Text style={{ color: textColor }}>{recommendation.description}</Text>
+              <Text style={{ color: '#888', }}>{recommendation.description}</Text>
             </View>
           ))}
         </View>
@@ -129,9 +129,17 @@ const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: '#b2d8e6',
   },
+  resultContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 16,
+    backgroundColor: '#b2d8e6',
+    marginTop: 50,
+  },
   scrollContainer: {
     flexGrow: 1,
     justifyContent: 'center',
+    backgroundColor: '#b2d8e6',
   },
   recommendationsContainer: {
     marginTop: 50, // Add margin to move the recommendations down
@@ -148,16 +156,20 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 16,
   },
+  reccomendationText: {
+    fontSize: 22,
+    marginBottom: 16,
+    fontWeight: 'bold',
+  },
   option: {
     padding: 16,
     backgroundColor: '#ddd',
     marginBottom: 16,
   },
   recommendation: {
-    marginBottom: 16,
-    padding: 10,
-    borderColor: '#ccc',
-    borderWidth: 1,
+    marginBottom: 20,
+    padding: 15,
+    backgroundColor: '#fff',
     borderRadius: 5,
   },
 });

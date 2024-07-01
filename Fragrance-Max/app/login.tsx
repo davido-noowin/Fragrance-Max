@@ -33,7 +33,7 @@ const LoginPage = () => {
   const handleLogin = () => {
     console.log(`Logging in with email: ${email}`);
 
-    fetch('http://52.14.129.167:8000/api/login', {
+    fetch('http://192.168.0.25:8000/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
