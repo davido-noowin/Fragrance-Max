@@ -19,7 +19,7 @@ class UserProfile(BaseModel):
 @router.post("/api/recommendations")
 def getRecommendations(request: Request, user_profile: UserProfile):
     try:
-        if user_profile.gender != "Male" or user_profile.gender != "Female":
+        if (user_profile.gender != "Male" and user_profile.gender != "Female"):
             user_profile.gender = "Unisex"
         user_profile.gender = user_profile.gender.lower()
         print(f"generating user recommendation with: {user_profile}")
@@ -45,7 +45,7 @@ def getRecommendations(request: Request, user_profile: UserProfile):
                                                                  user_profile.season, 
                                                                  user_profile.occasion)
         try:
-            summary = geminiSummary(recommended_fragrances_info.to_string(), 
+            summary = geminiSummary(recommended_fragrances_info, 
                                     user_profile.gender, 
                                     user_profile.season, 
                                     user_profile.occasion,
