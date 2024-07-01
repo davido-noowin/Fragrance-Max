@@ -1,10 +1,20 @@
 import React, { useEffect, useState, useRef} from 'react';
-import { Animated, useColorScheme, KeyboardAvoidingView, TextInput, StyleSheet, Image, TouchableOpacity, Text, Platform } from 'react-native';
+import { Animated, 
+        useColorScheme, 
+        KeyboardAvoidingView, 
+        TextInput, 
+        StyleSheet, 
+        Image, 
+        TouchableOpacity, 
+        Text, 
+        Platform, 
+        TouchableWithoutFeedback, 
+        Keyboard, 
+        View} from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useUserContext } from '@/app/auth'; // Ensure correct import path
-import { ScrollView } from 'react-native-gesture-handler';
 
 type RootStackParamList = {
   login: undefined;
@@ -64,23 +74,25 @@ const LoginPage = () => {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
-        <ScrollView>
-          <Image source={require('@/assets/images/Logo-fragrance.jpg')} style={styles.logo} />
-          <TextInput
-            style={[styles.input, { color: textColor }]}
-            onChangeText={setEmail}
-            value={email}
-            placeholder="Email"
-            keyboardType="email-address"
-            autoCapitalize="none"
-          />
-          <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Log In</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={handleSignUp}>
-            <Text style={styles.buttonText}>Sign Up</Text>
-          </TouchableOpacity>
-      </ScrollView>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View>
+            <Image source={require('@/assets/images/Logo-fragrance.jpg')} style={styles.logo} />
+            <TextInput
+              style={[styles.input, { color: textColor }]}
+              onChangeText={setEmail}
+              value={email}
+              placeholder="Email"
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
+            <TouchableOpacity style={styles.button} onPress={handleLogin}>
+              <Text style={styles.buttonText}>Log In</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+              <Text style={styles.buttonText}>Sign Up</Text>
+            </TouchableOpacity>
+          </View>
+        </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   </GestureHandlerRootView>
   );
@@ -92,6 +104,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 16,
     backgroundColor: 'white',
+    flexDirection: 'column',
   },
   logo: {
     width: 300,
