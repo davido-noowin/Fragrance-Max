@@ -11,6 +11,7 @@ router = APIRouter()
 class User(BaseModel):
     email: str
 
+
 @router.post("/api/login")
 def login(username: User):
     url = None

@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from root import router as home
 from recommendation import router as recommendation
 from login import router as login
+from fragranceCollection import router as collection
 
 app = FragranceAPI()
 
@@ -21,3 +22,4 @@ app.add_middleware(
 app.include_router(home)
 app.include_router(recommendation)
 app.include_router(login)
+app.include_router(collection)
