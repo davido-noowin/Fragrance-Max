@@ -13,9 +13,10 @@ class User(BaseModel):
 
 @router.post("/api/login")
 def login(username: User):
-    url = "mongodb+srv://chienbinh456:Urgods_project123@cluster0.yvb700i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    url = None
+    with open("mongoCluster.txt", 'r') as f:
+        url = f.readline()
     client = MongoClient(url, server_api=ServerApi('1'))
-    result = None
 
     try:
         db = client['Fragrances']
