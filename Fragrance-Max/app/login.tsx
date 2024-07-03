@@ -14,7 +14,7 @@ import { Animated,
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { useUserContext } from '@/app/auth'; // Ensure correct import path
+import { useUserContext } from '@/app/auth';
 
 type RootStackParamList = {
   login: undefined;
@@ -53,6 +53,7 @@ const LoginPage = () => {
       .catch(error => {
         console.error('Error:', error);
       });
+
   };
 
   const handleSignUp = () => {
