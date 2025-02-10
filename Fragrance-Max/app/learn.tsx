@@ -5,19 +5,19 @@ const Learn = () => {
   const terms = [
     {
       term: 'Parfum',
-      description: 'A fragrance with a 20-30% concentration of perfume oil to alcohol. Apply 1-2 sprays. Recommended locations include: Back of your neck, behind your ear, and by your collarbone.',
+      description: 'A fragrance with a 20-30% concentration of perfume oil to alcohol. Apply 1-2 sprays. Recommended locations include: back of your neck, behind your ear, and by your collarbone.',
     },
     {
       term: 'Eau de Cologne (EDC)',
-      description: 'The least concentrated style of fragrance, with a perfume oil to alcohol ratio of only 2-5%. Apply 3-7 sprays. Recommended locations include: Back of your neck, behind the ear, wrists, elbows, and collarbones.',
+      description: 'The least concentrated style of fragrance, with a perfume oil to alcohol ratio of only 2-5%. Apply 3-7 sprays. Recommended locations include: back of your neck, behind the ear, wrists, elbows, and collarbones.',
     },
     {
       term: 'Eau de Parfum (EDP)',
-      description: 'A fragrance with a 10-15% concentration of perfume oil to alcohol. Apply 1-3 sprays. Recommended locations include: Back of your neck, behind your ear, and by your collarbone.',
+      description: 'A fragrance with a 10-15% concentration of perfume oil to alcohol. Apply 1-3 sprays. Recommended locations include: back of your neck, behind your ear, and by your collarbone.',
     },
     {
       term: 'Eau De Toilette (EDT)',
-      description: 'A fragrance with a 5-10% concentration of perfume oil to alcohol. Apply 1-5 sprays. Recommended locations include: Back of your neck, behind your ear, your wrists, and your collarbones.',
+      description: 'A fragrance with a 5-10% concentration of perfume oil to alcohol. Apply 1-5 sprays. Recommended locations include: back of your neck, behind your ear, your wrists, and your collarbones.',
     },
     {
       term: 'Longevity',
