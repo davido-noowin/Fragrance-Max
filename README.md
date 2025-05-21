@@ -22,7 +22,6 @@ Project created using `npx create-expo-app@latest`
 
 - Install dependencies `pip install openpyxl scikit-learn numpy pandas fastapi uvicorn google-generativeai pymongo dnspython`
 
-
 - CD into backend/src
 
 - to run locally: `python -m uvicorn main:app --reload`
